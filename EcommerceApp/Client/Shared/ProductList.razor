@@ -1,0 +1,60 @@
+﻿<ul class="list-unstyled">
+    @foreach (var product in Products)
+   {
+       <li class="media my-3">
+           <div class="media-img-wrapper mr-2">
+               <a href="#">
+                   <img class="media-img" src="@product.ImageUrl" alt="@product.Title" />
+               </a>
+           </div>
+           <div class="media-body">
+               <a href="#">
+                   <h4 class="mb-0">@product.Title</h4>
+               </a>
+               <p>@product.Description</p>
+               <h5 class="price">
+                   $@product.Price
+               </h5>
+           </div>
+       </li>
+   }
+</ul>
+
+@code {
+    private static List<Product> Products = new List<Product>
+    {
+        new Product
+        {
+            Id = 1,
+            Title = "Clean Code 1",
+            Description = "How to write clean code 1.",
+            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
+            Price = 9.99m
+        },
+        new Product
+        {
+            Id = 2,
+            Title = "Clean Code 2",
+            Description = "How to write clean code 2.",
+            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
+            Price = 8.99m
+        },
+        new Product
+        {
+            Id = 3,
+            Title = "Clean Code 3",
+            Description = "How to write clean code 3.",
+            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
+            Price = 6.99m
+        },
+        new Product
+        {
+            Id = 4,
+            Title = "Clean Code 4",
+            Description = "How to write clean code 4.",
+            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
+            Price = 5.99m
+        },
+
+    };
+}
