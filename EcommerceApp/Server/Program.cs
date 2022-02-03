@@ -1,4 +1,5 @@
 global using EcommerceApp.Server;
+global using EcommerceApp.Shared;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,4 +1,6 @@
-﻿<ul class="list-unstyled">
+﻿@inject HttpClient Http
+
+<ul class="list-unstyled">
     @foreach (var product in Products)
    {
        <li class="media my-3">
@@ -21,40 +23,12 @@
 </ul>
 
 @code {
-    private static List<Product> Products = new List<Product>
-    {
-        new Product
-        {
-            Id = 1,
-            Title = "Clean Code 1",
-            Description = "How to write clean code 1.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 9.99m
-        },
-        new Product
-        {
-            Id = 2,
-            Title = "Clean Code 2",
-            Description = "How to write clean code 2.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 8.99m
-        },
-        new Product
-        {
-            Id = 3,
-            Title = "Clean Code 3",
-            Description = "How to write clean code 3.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 6.99m
-        },
-        new Product
-        {
-            Id = 4,
-            Title = "Clean Code 4",
-            Description = "How to write clean code 4.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 5.99m
-        },
+    private static List<Product> Products = new List<Product>();
 
-    };
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await Http.GetFromJsonAsync<List<Product>>("api/Products");
+        if (result != null)
+            Products = result;
+    }
 }
