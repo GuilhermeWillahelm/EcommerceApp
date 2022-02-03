@@ -1,7 +1,7 @@
 global using EcommerceApp.Server;
 global using EcommerceApp.Shared;
 global using Microsoft.EntityFrameworkCore;
-using EcommerceApp.Server.Data;
+global using EcommerceApp.Server.Data;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);

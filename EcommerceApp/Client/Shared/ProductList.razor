@@ -10,7 +10,7 @@
                </a>
            </div>
            <div class="media-body">
-               <a href="#">
+               <a href="ProductDetail" >
                    <h4 class="mb-0">@product.Title</h4>
                </a>
                <p>@product.Description</p>
@@ -27,8 +27,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await Http.GetFromJsonAsync<List<Product>>("api/Products");
-        if (result != null)
-            Products = result;
+        var result = await Http.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/Products");
+        if (result != null && result.Data != null)
+            Products = result.Data;
     }
 }

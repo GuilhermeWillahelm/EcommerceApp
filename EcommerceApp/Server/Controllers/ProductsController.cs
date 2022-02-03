@@ -7,47 +7,23 @@ namespace EcommerceApp.Server.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private static List<Product> Products = new List<Product>
-    {
-        new Product
-        {
-            Id = 1,
-            Title = "Clean Code 1",
-            Description = "How to write clean code 1.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 9.99m
-        },
-        new Product
-        {
-            Id = 2,
-            Title = "Clean Code 2",
-            Description = "How to write clean code 2.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 8.99m
-        },
-        new Product
-        {
-            Id = 3,
-            Title = "Clean Code 3",
-            Description = "How to write clean code 3.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 6.99m
-        },
-        new Product
-        {
-            Id = 4,
-            Title = "Clean Code 4",
-            Description = "How to write clean code 4.",
-            ImageUrl = "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg",
-            Price = 5.99m
-        },
+        private readonly DataContext _context;
 
-    };
+        public ProductsController(DataContext context)
+        {
+            _context = context;
+        }
+   
 
         [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProducts()
         {
-            return Ok(Products);
+            var products = await _context.Products.ToListAsync();
+            var response = new ServiceResponse<List<Product>>()
+            {
+               Data = products
+            };
+            return Ok(response);
         }
     }
 }
