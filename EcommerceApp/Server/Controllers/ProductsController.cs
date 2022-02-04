@@ -8,22 +8,27 @@ namespace EcommerceApp.Server.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IProductService _productService;
 
-        public ProductsController(DataContext context)
+        public ProductsController(DataContext context, IProductService productService)
         {
             _context = context;
+            _productService = productService;
         }
-   
+
 
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<Product>>>> GetProducts()
         {
+            /*
             var products = await _context.Products.ToListAsync();
             var response = new ServiceResponse<List<Product>>()
             {
                Data = products
             };
-            return Ok(response);
+            */
+            var result = await _productService.GetProductAsync();
+            return Ok(result);
         }
     }
 }
