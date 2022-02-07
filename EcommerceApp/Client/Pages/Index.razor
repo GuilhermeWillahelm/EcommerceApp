@@ -3,9 +3,14 @@
 @page "/{categoryUrl}"
 @inject IProductService ProductService
 
-<PageTitle>My Shop</PageTitle>
-
-<ProductList />
+@if (SearchText == null && CategoryUrl == null)
+{
+    <FeaturedProducts />
+}
+else
+{
+    <ProductList />
+}
 
 @code {
     [Parameter]
@@ -21,6 +26,13 @@
             await ProductService.SearchProducts(SearchText);
             return;
         }
-        await ProductService.GetProducts(CategoryUrl);
+        else if (CategoryUrl != null)
+        {
+            await ProductService.GetProducts(CategoryUrl);
+        }
+        else
+        {
+            await ProductService.GetProducts();
+        }
     }
 }
