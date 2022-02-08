@@ -4,6 +4,7 @@ global using Microsoft.EntityFrameworkCore;
 global using EcommerceApp.Server.Data;
 global using EcommerceApp.Server.Services.ProductService;
 global using EcommerceApp.Server.Services.CategoryService;
+global using EcommerceApp.Server.Services.AuthService;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
