@@ -118,7 +118,7 @@ namespace EcommerceApp.Server.Services.AuthService
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
-            using (var hmac = new HMACSHA512())
+            using (var hmac = new HMACSHA512(passwordSalt))
             {
                 var computerHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
 

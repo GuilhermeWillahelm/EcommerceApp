@@ -46,7 +46,7 @@ namespace EcommerceApp.Client
             return state;
         }
 
-        private byte[] ParseBaseWithoutPadding(string base64)
+        private byte[] ParseBase64WithoutPadding(string base64)
         {
             switch (base64.Length % 4)
             {
@@ -60,7 +60,7 @@ namespace EcommerceApp.Client
         private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
         {
             var payload = jwt.Split('.')[1];
-            var jsonBytes = ParseBaseWithoutPadding(payload);
+            var jsonBytes = ParseBase64WithoutPadding(payload);
             var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
 
             var claims = keyValuePairs.Select(p => new Claim(p.Key, p.Value.ToString()));
