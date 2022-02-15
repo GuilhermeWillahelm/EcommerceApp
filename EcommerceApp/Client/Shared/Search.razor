@@ -1,13 +1,13 @@
 ﻿@inject NavigationManager NavigationManager
 @inject IProductService ProductService
 
-<div class="input-group">
+<div class="input-group container">
     <input @bind-value="searchText"
            @bind-value:event="oninput"
            type="search"
            list="products"
            @onkeyup="HandleSearch"
-           class="form-control mb-1 col-1"
+           class="form-control"
            placeholder="Search..."
            @ref="searchInput"/>
     <datalist id="products">
