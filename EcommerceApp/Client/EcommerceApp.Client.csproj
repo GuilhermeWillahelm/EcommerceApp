@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Shared\EcommerceApp.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\ProductTypeService\" />
+  </ItemGroup>
+
 </Project>
