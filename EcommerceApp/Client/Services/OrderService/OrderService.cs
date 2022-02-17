@@ -27,7 +27,7 @@ namespace EcommerceApp.Client.Services.OrderService
             return result.Data;
         }
 
-        public async Task<string> PlacerOder()
+        public async Task<string> PlacerOrder()
         {
             if (await IsUserAuthenticated())
             {
