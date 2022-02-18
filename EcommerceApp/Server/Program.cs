@@ -3,6 +3,7 @@ global using EcommerceApp.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using EcommerceApp.Server.Data;
 global using EcommerceApp.Server.Services.ProductService;
+global using EcommerceApp.Server.Services.ProductTypeService;
 global using EcommerceApp.Server.Services.CategoryService;
 global using EcommerceApp.Server.Services.AuthService;
 global using EcommerceApp.Server.Services.AddressService;
@@ -24,6 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
