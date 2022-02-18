@@ -63,11 +63,12 @@ namespace EcommerceApp.Server.Services.AuthService
             }
             else if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
-                response.Success = false;
+                response.Success = true;
                 response.Message = "Wrong password.";
             }
             else
             {
+                response.Success = true;
                 response.Data = CreateToken(user);
             }
             return response;
