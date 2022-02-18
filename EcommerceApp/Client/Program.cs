@@ -1,6 +1,7 @@
 global using EcommerceApp.Shared;
 global using System.Net.Http.Json;
 global using EcommerceApp.Client.Services.ProductService;
+global using EcommerceApp.Client.Services.ProductTypeService;
 global using EcommerceApp.Client.Services.CategoryService;
 global using EcommerceApp.Client.Services.AuthService;
 global using EcommerceApp.Client.Services.AddressService;
@@ -19,6 +20,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
