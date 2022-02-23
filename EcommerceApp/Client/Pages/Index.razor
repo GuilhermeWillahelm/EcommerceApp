@@ -29,10 +29,6 @@ else
             await ProductService.SearchProducts(SearchText, Page);
             return;
         }
-        else if (CategoryUrl != null)
-        {
-            await ProductService.GetProducts(CategoryUrl);
-        }
         else
         {
             await ProductService.GetProducts();

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceApp.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220217011106_InitialCreate")]
+    [Migration("20220220152116_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,6 +90,9 @@ namespace EcommerceApp.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -97,6 +100,9 @@ namespace EcommerceApp.Server.Migrations
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Visible")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -106,20 +112,26 @@ namespace EcommerceApp.Server.Migrations
                         new
                         {
                             Id = 1,
+                            Deleted = false,
                             Name = "Book",
-                            Url = "book"
+                            Url = "book",
+                            Visible = true
                         },
                         new
                         {
                             Id = 2,
+                            Deleted = false,
                             Name = "Movies",
-                            Url = "movies"
+                            Url = "movies",
+                            Visible = true
                         },
                         new
                         {
                             Id = 3,
+                            Deleted = false,
                             Name = "Video Games",
-                            Url = "video-games"
+                            Url = "video-games",
+                            Visible = true
                         });
                 });
 

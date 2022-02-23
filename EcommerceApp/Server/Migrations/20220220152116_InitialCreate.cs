@@ -30,7 +30,9 @@ namespace EcommerceApp.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Visible = table.Column<bool>(type: "bit", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -197,12 +199,12 @@ namespace EcommerceApp.Server.Migrations
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "Name", "Url" },
+                columns: new[] { "Id", "Deleted", "Name", "Url", "Visible" },
                 values: new object[,]
                 {
-                    { 1, "Book", "book" },
-                    { 2, "Movies", "movies" },
-                    { 3, "Video Games", "video-games" }
+                    { 1, false, "Book", "book", true },
+                    { 2, false, "Movies", "movies", true },
+                    { 3, false, "Video Games", "video-games", true }
                 });
 
             migrationBuilder.InsertData(

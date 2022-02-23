@@ -31,7 +31,8 @@ namespace EcommerceApp.Client.Services.CartService
                     cart = new List<CartItem>();
                 }
 
-                var sameItem = cart.Find(x => x.ProductId == cartItem.ProductId && x.ProductTypeId == cartItem.ProductTypeId);
+                var sameItem = cart.Find(x => x.ProductId == cartItem.ProductId &&
+                    x.ProductTypeId == cartItem.ProductTypeId);
                 if (sameItem == null)
                 {
                     cart.Add(cartItem);
@@ -43,7 +44,6 @@ namespace EcommerceApp.Client.Services.CartService
 
                 await _localStore.SetItemAsync("cart", cart);
             }
-
             await GetCartItemsCount();
         }
 
